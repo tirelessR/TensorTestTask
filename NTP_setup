@@ -1,0 +1,9 @@
+<%# snippet 'NTP_setup' %>
+cat > /etc/chrony.conf << 'EOF'
+pool 2.alma.pool.ntp.org iburst
+server 192.168.56.101 iburst
+driftfile /var/lib/chrony/drift
+makestep 1.0 3
+rtcsync
+EOF
+systemctl enable chronyd
